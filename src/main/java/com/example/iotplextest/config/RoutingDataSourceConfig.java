@@ -1,6 +1,7 @@
 package com.example.iotplextest.config;
 
 import com.example.iotplextest.dbreplication.ReplicationRoutingDataSource;
+import com.example.iotplextest.enumpack.DataSourceType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +26,8 @@ public class RoutingDataSourceConfig {
 
         Map<Object, Object> dataSourceMap = new HashMap<>();
 
-        dataSourceMap.put("master", masterDataSource);
-        dataSourceMap.put("slave", slaveDataSource);
+        dataSourceMap.put(DataSourceType.Master, masterDataSource);
+        dataSourceMap.put(DataSourceType.Slave, slaveDataSource);
 
         routingDataSource.setTargetDataSources(dataSourceMap);
         routingDataSource.setDefaultTargetDataSource(masterDataSource);
