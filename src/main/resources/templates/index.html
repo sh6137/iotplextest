@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" th:name="sampleData">
+    <button type="button" th:onclick="sendDataInsert()">sendData</button>
+    <br>
+</div>
+<div>
+    <br>
+    <table class="table" th:name="AAAcommand">
+        <thead class="table-danger">
+        <tr>
+            <th scope="col">AAACommand</th>
+            <th scope="col">command</th>
+            <th scope="col">sender</th>
+            <th scope="col">valuesA</th>
+            <th scope="col">latitude</th>
+            <th scope="col">longitude</th>
+            <th scope="col">valuesB</th>
+            <th scope="col">dataLength</th>
+            <th scope="col">YN</th>
+            <th scope="col">active</th>
+            <th scope="col">valuesC</th>
+            <th scope="col">valuesD</th>
+            <th scope="col">onAndOff</th>
+            <th scope="col">lengthData</th>
+            <th scope="col">valuesE</th>
+            <th scope="col">valuesF</th>
+            <th scope="col">specialData</th>
+            <th scope="col">fieldData</th>
+            <th scope="col">totalData</th>
+            <th scope="col">checksum</th>
+        </tr>
+        </thead>
+        <tbody th:name="tableBodyAAA"></tbody>
+    </table>
+    <br>
+    <table class="table" th:name="BBBcommand">
+        <thead class="table-success">
+        <tr>
+            <th scope="col">BBBcommand</th>
+            <th scope="col">command</th>
+            <th scope="col">sender</th>
+            <th scope="col">valuesA</th>
+            <th scope="col">checkYN</th>
+            <th scope="col">receiveValue</th>
+        </tr>
+        </thead>
+        <tbody th:name="tableBodyBBB"></tbody>
+    </table>
+    <br>
+    <table class="table" th:name="CCCcommand">
+        <thead class="table-warning">
+        <tr>
+            <th scope="col">CCCcommand</th>
+            <th scope="col">command</th>
+            <th scope="col">sender</th>
+            <th scope="col">valuesA</th>
+            <th scope="col">checkYN</th>
+            <th scope="col">NEBD</th>
+            <th scope="col">latitude</th>
+            <th scope="col">longitude</th>
+            <th scope="col">valuesB</th>
+        </tr>
+        </thead>
+        <tbody th:name="tableBodyCCC"></tbody>
+    </table>
+    <br>
+    <table class="table" th:name="DDDcommand">
+        <thead class="table-secondary">
+        <tr>
+            <th scope="col">DDDcommand</th>
+            <th scope="col">command</th>
+            <th scope="col">sender</th>
+            <th scope="col">checkYN</th>
+            <th scope="col">returnValue</th>
+        </tr>
+        </thead>
+        <tbody th:name="tableBodyDDD"></tbody>
+    </table>
+</div>
+
+</body>
+</html>
