@@ -4,10 +4,20 @@ spring:
   datasource:
     dbcp2:
       test-while-idle: true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/iotplextest?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: 12345678
+    master:
+      hikari:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/iotplextest?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        read-only: false
+        username: root
+        password: 12345678
+    slave:
+      hikari:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/iotplextest2?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        read-only: true
+        username: root
+        password: 12345678
   jpa:
     open-in-view: true
     generate-ddl: true

@@ -14,12 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class TestServiceImpl implements TestService {
     private final AAARepository aaaRepository;
     private final BBBRepository bbbRepository;
@@ -27,6 +29,7 @@ public class TestServiceImpl implements TestService {
     private final DDDRepository dddRepository;
 
     @Override
+    @Transactional(readOnly = false)
     public void parser(String str) {
         String command = str.substring(0, 3);
         String sender = str.substring(3, 16);
@@ -202,6 +205,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CommandAAA> aaaCommandList() {
         List<CommandAAA> commandAAAList = aaaRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
         log.info("commandAAAList : {}", commandAAAList);
@@ -209,6 +213,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CommandBBB> bbbCommandList() {
         List<CommandBBB> commandBBBList = bbbRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
         log.info("commandBBBList : {}", commandBBBList);
@@ -216,6 +221,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CommandCCC> cccCommandList() {
         List<CommandCCC> commandCCCList = cccRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
         log.info("commandCCCList : {}", commandCCCList);
@@ -223,6 +229,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CommandDDD> dddCommandList() {
         List<CommandDDD> commandDDDList = dddRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
         log.info("commandDDDList : {}", commandDDDList);

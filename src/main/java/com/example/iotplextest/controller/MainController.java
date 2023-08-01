@@ -5,6 +5,7 @@ import com.example.iotplextest.domain.CommandBBB;
 import com.example.iotplextest.domain.CommandCCC;
 import com.example.iotplextest.domain.CommandDDD;
 import com.example.iotplextest.service.TestService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 @Slf4j
 public class MainController {
     private final TestService testService;
