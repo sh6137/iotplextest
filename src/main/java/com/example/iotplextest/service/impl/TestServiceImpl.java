@@ -31,6 +31,34 @@ public class TestServiceImpl implements TestService {
     @Override
     @Transactional(readOnly = false)
     public void parser(String str) {
+        commandSave(str);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<CommandAAA> aaaCommandList() {
+        List<CommandAAA> commandAAAList = aaaRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
+        log.info("commandAAAList : {}", commandAAAList);
+        return commandAAAList;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<CommandBBB> bbbCommandList() {
+        List<CommandBBB> commandBBBList = bbbRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
+        log.info("commandBBBList : {}", commandBBBList);
+        return commandBBBList;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<CommandCCC> cccCommandList() {
+        List<CommandCCC> commandCCCList = cccRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
+        log.info("commandCCCList : {}", commandCCCList);
+        return commandCCCList;
+    }
+
+    private void commandSave(String str) {
         String command = str.substring(0, 3);
         String sender = str.substring(3, 16);
         //command AAA,BBB,CCC
@@ -201,31 +229,6 @@ public class TestServiceImpl implements TestService {
         } else {
             log.error("잘못된 값 : {}", str);
         }
-
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<CommandAAA> aaaCommandList() {
-        List<CommandAAA> commandAAAList = aaaRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
-        log.info("commandAAAList : {}", commandAAAList);
-        return commandAAAList;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<CommandBBB> bbbCommandList() {
-        List<CommandBBB> commandBBBList = bbbRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
-        log.info("commandBBBList : {}", commandBBBList);
-        return commandBBBList;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<CommandCCC> cccCommandList() {
-        List<CommandCCC> commandCCCList = cccRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Order.desc("id")))).getContent();
-        log.info("commandCCCList : {}", commandCCCList);
-        return commandCCCList;
     }
 
     @Override
